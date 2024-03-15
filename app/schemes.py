@@ -50,3 +50,19 @@ class CreateList(BaseModel):
     status:str
     images:str
     
+
+class UserLogin(BaseModel):
+    email: EmailStr
+    password: str
+
+
+class Token(BaseModel):
+    token: str
+    token_type: str
+
+    class Config:
+        orm_mode = True
+
+
+class TokenData(BaseModel):
+    id: Optional[str] = None

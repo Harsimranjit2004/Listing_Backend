@@ -1,5 +1,5 @@
 from fastapi import Depends, FastAPI
-from .routers import listing, user
+from .routers import listing, user, auth
 from sqlalchemy import create_engine, MetaData
 from sqlalchemy.orm import sessionmaker,Session
 from sqlalchemy.ext.declarative import declarative_base
@@ -13,6 +13,7 @@ app = FastAPI()
 
 app.include_router(user.router)
 app.include_router(listing.router)
+app.include_router(auth.router)
 def get_db():
     db = SessionLocal()
     try:

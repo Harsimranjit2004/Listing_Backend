@@ -47,5 +47,11 @@ def updateListing(id:int,update_post:schemes.CreateList,  db:Session = Depends(g
     return list_query.first()
 
 @router.delete("/{id}", )
-def delete():
-    return {"listing": "delete lisitng"}
+def delete(id:int,update_post:schemes.CreateList,  db:Session = Depends(get_db)):
+    list_query = db.query(models.Listing).filter(models.Listing.id == id)
+    list = list_query.first()
+    if list == None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"post with id: {id} does not exist")
+    list_query.delete(synchronize_session=False)
+    db.commit()
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
