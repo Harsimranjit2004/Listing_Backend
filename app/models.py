@@ -17,9 +17,12 @@ class Listing(Base):
     description: Mapped[str] = mapped_column(nullable=True)
     price:Mapped[float] = mapped_column(nullable=False)
     location: Mapped[str] = mapped_column(nullable=False)
+    nBathrooms:Mapped[int] = mapped_column()
+    nRooms: Mapped[int] = mapped_column(nullable=False)
     date_posted: Mapped[datetime.datetime] = mapped_column(nullable=False, server_default=text('now()'))
     images:Mapped[str] = mapped_column(nullable=True)
     status: Mapped[str] = mapped_column(nullable=False)
+    type: Mapped[str] = mapped_column(default="any")
 
    
 

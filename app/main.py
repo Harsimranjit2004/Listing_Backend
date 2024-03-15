@@ -33,6 +33,9 @@ async def head_endpoint():
 async def get_endpoint():
     # Logic for GET request
     return {"message": "This is a GET request"}
+
+
+
 @app.get("/")
 def root():
     return {"message":"Welcome to xo spacetech"}

@@ -37,6 +37,9 @@ class ListOut(BaseModel):
     date_posted:datetime
     status:str
     images:str
+    nRooms:int
+    nBathrooms:int
+    type:str
 
 
     class Config:
@@ -48,7 +51,10 @@ class CreateList(BaseModel):
     price:float
     location:str
     status:str
+    nBathrooms:Optional[int]
+    nRooms:Optional[int]
     images:str
+    type:str
     
 
 class UserLogin(BaseModel):
