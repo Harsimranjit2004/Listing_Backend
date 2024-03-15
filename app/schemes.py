@@ -61,7 +61,7 @@ class Token(BaseModel):
     token_type: str
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class TokenData(BaseModel):
