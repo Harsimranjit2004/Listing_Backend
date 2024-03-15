@@ -21,6 +21,8 @@ class Listing(Base):
     images:Mapped[str] = mapped_column(nullable=True)
     status: Mapped[str] = mapped_column(nullable=False)
 
+   
+
 
 class User(Base):
     __tablename__ = "users"
@@ -29,8 +31,6 @@ class User(Base):
     password: Mapped[str] = mapped_column(nullable=False)
     firstName: Mapped[str] = mapped_column(nullable=False)
     lastName: Mapped[str] = mapped_column(nullable=False)
-    profilePicture: Mapped[str] = mapped_column(nullable=False)
-    phoneNumber: Mapped[str] = mapped_column(nullable=True)
     created_At: Mapped[datetime.datetime] = mapped_column(nullable=False, server_default=text('now()'))
 
 class Message(Base):
@@ -63,5 +63,4 @@ class Report(Base):
     listing_id: Mapped[int] = mapped_column(ForeignKey("listings.listing_id", ondelete="CASCADE"), nullable=False)
     report_reason: Mapped[str] = mapped_column(nullable=False)
     timestamp: Mapped[datetime.datetime] = mapped_column(nullable=False, server_default=text('now()'))
-
 
