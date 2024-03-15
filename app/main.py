@@ -24,7 +24,15 @@ def get_db():
     finally:
         db.close()
 
+@app.head("/endpoint")
+async def head_endpoint():
+    # Logic for HEAD request
+    return {"message": "This is a HEAD request"}
 
+@app.get("/endpoint")
+async def get_endpoint():
+    # Logic for GET request
+    return {"message": "This is a GET request"}
 @app.get("/")
 def root():
     return {"message":"Welcome to xo spacetech"}
