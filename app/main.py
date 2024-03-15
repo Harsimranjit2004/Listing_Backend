@@ -1,11 +1,6 @@
 from fastapi import Depends, FastAPI
 from .routers import listing, user, auth
-from sqlalchemy import create_engine, MetaData
 from fastapi.middleware.cors import CORSMiddleware
-from sqlalchemy.orm import sessionmaker,Session
-from sqlalchemy.ext.declarative import declarative_base
-import psycopg2
-from psycopg2.extras import RealDictCursor
 from . import models
 from .database import engine ,SessionLocal
 
