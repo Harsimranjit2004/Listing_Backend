@@ -1,6 +1,7 @@
 from fastapi import Depends, FastAPI
 from .routers import listing, user, auth
 from sqlalchemy import create_engine, MetaData
+from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import sessionmaker,Session
 from sqlalchemy.ext.declarative import declarative_base
 import psycopg2
@@ -10,7 +11,14 @@ from .database import engine ,SessionLocal
 
 models.Base.metadata.create_all(bind=engine)
 app = FastAPI()
-
+origins = ["*"]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 app.include_router(user.router)
 app.include_router(listing.router)
 app.include_router(auth.router)
